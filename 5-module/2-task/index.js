@@ -5,3 +5,4 @@ let btn = document.querySelector(".toggle-text-button");
   btn.addEventListener("click", () => {
     text.hidden == true ? (text.hidden = false) : (text.hidden = true);
   });
+}
