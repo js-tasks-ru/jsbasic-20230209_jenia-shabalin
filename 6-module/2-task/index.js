@@ -1,5 +1,5 @@
-import createElement from '../../assets/lib/create-element.js';
-import escapeHtml from '../../assets/lib/escape-html.js';
+import createElement from "../../assets/lib/create-element.js";
+import escapeHtml from "../../assets/lib/escape-html.js";
 
 export default class ProductCard {
   constructor(product) {
@@ -32,9 +32,11 @@ export default class ProductCard {
   }
 
   onClick(event) {
-    this.elem.dispatchEvent(new CustomEvent("product-add", {
-      detail: this.product.id,
-      bubbles: true
-    }));
+    this.elem.dispatchEvent(
+      new CustomEvent("product-add", {
+        detail: this.product.id,
+        bubbles: true,
+      })
+    );
   }
 }
