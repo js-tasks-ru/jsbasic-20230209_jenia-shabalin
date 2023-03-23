@@ -11,13 +11,13 @@ export default class Cart {
     }
 
     let cartItem = this.cartItems.find(
-      item => item.product.id === product.id
+      (item) => item.product.id === product.id
     );
 
     if (!cartItem) {
       cartItem = {
         product,
-        count: 1
+        count: 1,
       };
       this.cartItems.push(cartItem);
     } else {
@@ -28,7 +28,7 @@ export default class Cart {
   }
 
   updateProductCount(productId, amount) {
-    let cartItem = this.cartItems.find(item => item.product.id == productId);
+    let cartItem = this.cartItems.find((item) => item.product.id == productId);
     cartItem.count += amount;
 
     if (cartItem.count === 0) {
@@ -38,7 +38,22 @@ export default class Cart {
     this.onProductUpdate(cartItem);
   }
 
-  onProductUpdate() {
+  isEmpty() {
+    return this.cartItems.length === 0;
+  }
+
+  getTotalCount() {
+    return this.cartItems.reduce((sum, item) => sum + item.count, 0);
+  }
+
+  getTotalPrice() {
+    return this.cartItems.reduce(
+      (sum, item) => sum + item.product.price * item.count,
+      0
+    );
+  }
+
+  onProductUpdate(cartItem) {
     // реализуем в следующей задаче
 
     this.cartIcon.update(this);
@@ -59,4 +74,3 @@ export default class Cart {
     );
   }
 }
-
