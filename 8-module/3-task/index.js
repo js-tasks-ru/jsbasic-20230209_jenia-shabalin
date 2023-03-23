@@ -58,4 +58,19 @@ export default class Cart {
 
     this.cartIcon.update(this);
   }
+
+  isEmpty() {
+    return this.cartItems.length === 0;
+  }
+
+  getTotalCount() {
+    return this.cartItems.reduce((sum, item) => sum + item.count, 0);
+  }
+
+  getTotalPrice() {
+    return this.cartItems.reduce(
+      (sum, item) => sum + item.product.price * item.count,
+      0
+    );
+  }
 }
